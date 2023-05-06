@@ -1,51 +1,34 @@
-import React from 'react';
-import type { PropsWithChildren } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Provider } from 'react-redux';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { SafeAreaView, StyleSheet, useColorScheme } from 'react-native';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { store } from './src/store';
-import { HomeScreen } from './src/modules/home';
+import { RootNavigator } from './src/modules/navigation';
+import { commonStyles } from './src/styles';
+import {
+  ThemeContext,
+  ThemeProvider,
+} from './src/modules/common/context/global';
 
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+export const App = () => {
+  const { isDarkTheme } = useContext(ThemeContext);
+  const styles = useMemo(() => stylesStyleSheet(isDarkTheme), [isDarkTheme]);
 
   return (
     <Provider store={store}>
-      <SafeAreaView style={backgroundStyle}>
-        <HomeScreen />
-      </SafeAreaView>
+      <ThemeProvider>
+        <RootNavigator />
+      </ThemeProvider>
     </Provider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+const stylesStyleSheet = (isDarkMode: boolean) =>
+  StyleSheet.create({
+    container: {
+      backgroundColor: isDarkMode
+        ? commonStyles.colors.swedish_pallet_black_pearl
+        : commonStyles.colors.swedish_pallet_megaman,
+      flex: 1,
+    },
+  });

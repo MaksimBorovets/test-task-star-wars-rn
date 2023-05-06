@@ -1,26 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import {
-  useGetStarWarsCharactersQuery,
-} from '../../store/api/starWars';
+import { View } from 'react-native';
+
+import { Header } from '../common/components/header';
+import { useCommonStyles } from '../common/hooks/useCommonStyles';
 
 interface IProps {}
 
 export const HomeScreen = () => {
-  const { data, error, isLoading } = useGetStarWarsCharactersQuery({
-    page: 1,
-    pageSize: 10,
-  });
+  // TODO : fetck list
+  // const { data, error, isLoading } = useGetStarWarsCharactersQuery({
+  //   page: 1,
+  //   pageSize: 10,
+  // });
+
+  const { container } = useCommonStyles();
 
   return (
-    <View style={styles.container}>
-      <Text>DELETE_THIS</Text>
+    <View style={container}>
+      <Header />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'red',
-  },
-});

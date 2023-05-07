@@ -1,14 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
 
 import { starWarsApi } from './api/starWars';
+import starWarsCharactersReducer from './slices/starWarsCharactersSlice';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     [starWarsApi.reducerPath]: starWarsApi.reducer,
+    starWarsCharacters: starWarsCharactersReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(starWarsApi.middleware),
 });
 
-setupListeners(store.dispatch);
+export type RootStateType = ReturnType<typeof store.getState>;
+
+export default store;

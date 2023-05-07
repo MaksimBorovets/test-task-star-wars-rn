@@ -27,8 +27,10 @@ export const Header = () => {
     <View style={styles.container}>
       <ToggleThemeComponent />
       <View style={styles.itemsContainer}>
-        {GENDER_STATS_TABS.map(({ count, title }) => (
-          <HeaderItem count={formatNumber(count)} title={title} />
+        {GENDER_STATS_TABS.map(({ count, title }, index) => (
+          <React.Fragment key={title + index}>
+            <HeaderItem count={formatNumber(count)} title={title} />
+          </React.Fragment>
         ))}
       </View>
     </View>

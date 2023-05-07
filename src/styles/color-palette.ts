@@ -10,4 +10,10 @@ export const colorPalette = {
   swedish_pallet_dark_periwinkle: '#575fcf',
   swedish_pallet_free_speech_blue: '#3c40c6',
   spanish_pallet_lucky_point: '#2c2c54',
+  indian_pallet_fiery_fuchsia: '#B33771',
+  indian_pallet_magenta_purple: '#6D214F',
+  indian_pallet_falling: '#CAD3C8',
+  indian_pallet_ships_off: '#2C3A47',
+  indian_pallet_navy_blue: '#182C61',
+  indian_pallet_white_pepper: '#F8EFBA',
 };

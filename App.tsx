@@ -2,13 +2,14 @@ import React, { useContext, useMemo } from 'react';
 import { Provider } from 'react-redux';
 import { SafeAreaView, StyleSheet, useColorScheme } from 'react-native';
 
-import { store } from './src/store';
+
 import { RootNavigator } from './src/modules/navigation';
 import { commonStyles } from './src/styles';
 import {
   ThemeContext,
   ThemeProvider,
 } from './src/modules/common/context/global';
+import store from './src/store';
 
 export const App = () => {
   const { isDarkTheme } = useContext(ThemeContext);

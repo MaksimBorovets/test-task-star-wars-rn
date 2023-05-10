@@ -1,18 +1,15 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { Header } from '../common/components/header';
+import { FavoriteHeroesList } from './components/favorite-heroes-list';
 import { useCommonStyles } from '../common/hooks/useCommonStyles';
-import { HeroesList } from './components/heroes-list';
 
-
-export const HomeScreen = () => {
+export const FavoriteHeroesScreen = () => {
   const { container } = useCommonStyles();
 
   return (
     <View style={container}>
-      <Header />
-      <HeroesList />
+      <FavoriteHeroesList />
     </View>
   );
 };

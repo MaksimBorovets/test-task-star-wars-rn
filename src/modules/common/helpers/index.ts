@@ -7,3 +7,12 @@ export const formatNumber = (num: number): string => {
     return num.toString();
   }
 };
+
+export const urlOnlyNumberFormatter = (
+  url: string | undefined,
+): string | null => {
+  if (!url) {
+    return null;
+  }
+  return url.replace(/\D/g, '');
+};

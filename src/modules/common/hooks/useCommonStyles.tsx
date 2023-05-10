@@ -6,14 +6,20 @@ import { commonStyles } from '../../../styles';
 
 export const useCommonStyles = () => {
   const { isDarkTheme } = useContext(ThemeContext);
-  const { container, textColorDefault, textColorPrimary, containerSecondary } =
-    useMemo(() => stylesStyleSheet(isDarkTheme), [isDarkTheme]);
+  const {
+    container,
+    textColorDefault,
+    textColorPrimary,
+    containerSecondary,
+    btnPrimaryColors,
+  } = useMemo(() => stylesStyleSheet(isDarkTheme), [isDarkTheme]);
 
   return {
     container,
     textColorDefault,
     containerSecondary,
     textColorPrimary,
+    btnPrimaryColors,
   };
 };
 
@@ -37,5 +43,10 @@ const stylesStyleSheet = (isDarkMode: boolean) =>
       color: isDarkMode
         ? commonStyles.colors.indian_pallet_falling
         : commonStyles.colors.indian_pallet_white_pepper,
+    },
+    btnPrimaryColors: {
+      backgroundColor: isDarkMode
+        ? commonStyles.colors.swedish_pallet_sunset_orange
+        : commonStyles.colors.swedish_pallet_red_orange,
     },
   });

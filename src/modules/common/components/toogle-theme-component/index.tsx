@@ -1,18 +1,29 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import DarkModeItem from '../../../../assets/icons/brightness.svg';
 import { ThemeContext } from '../../context/global';
 import { useCommonStyles } from '../../hooks/useCommonStyles';
 import { commonStyles } from '../../../../styles';
+import { NAVIGATION_KEYS, RootStackParamList } from '../../../navigation/types';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 export const ToggleThemeComponent = () => {
   const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
   const { textColorDefault } = useCommonStyles();
   const styles = stylesStyleSheet(isDarkTheme);
+  const { navigate } = useNavigation<StackNavigationProp<RootStackParamList>>();
+
+  const handleNavigateToFavoritesScreen = () => {
+    navigate(NAVIGATION_KEYS.FAVORITES);
+  };
   return (
     <View style={styles.toggleThemeComponentBox}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        onPress={handleNavigateToFavoritesScreen}
+        style={styles.button}
+      >
         <Text style={[styles.favoritesText, textColorDefault]}>
           See Your Favorites <Text style={styles.star}>⭐️</Text>
         </Text>

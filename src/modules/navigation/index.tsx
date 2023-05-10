@@ -6,16 +6,17 @@ import {
 } from '@react-navigation/stack';
 
 import { HomeScreen } from '../home';
-import { IRootStackParamList, NAVIGATION_KEYS } from './types';
+import { RootStackParamList, NAVIGATION_KEYS } from './types';
 import { NavigationWrapper } from './components/navigation-wrapper';
 import { NavigationContainer } from '@react-navigation/native';
+import { FavoriteHeroesScreen } from '../favorite-heroes-screen';
 
-const Stack = createStackNavigator<IRootStackParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
 const screenOptions = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<IRootStackParamList>;
+  navigation: StackNavigationProp<RootStackParamList>;
 }): StackNavigationOptions => {
   return {
     headerShown: false,
@@ -30,6 +31,11 @@ export const RootNavigator = () => {
           name={NAVIGATION_KEYS.HOME}
           component={HomeScreen}
           options={screenOptions}
+        />
+        <Stack.Screen
+          name={NAVIGATION_KEYS.FAVORITES}
+          component={FavoriteHeroesScreen}
+          // options={screenOptions}
         />
       </>
     ),

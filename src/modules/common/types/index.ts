@@ -15,3 +15,7 @@ export interface StarWarsCharacter {
 export interface Planet {
   name: string;
 }
+
+export interface Species {
+  name: string;
+}

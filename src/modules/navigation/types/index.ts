@@ -1,7 +1,9 @@
 export enum NAVIGATION_KEYS {
   HOME = 'HOME',
+  FAVORITES = 'FAVORITES',
 }
 
-export type IRootStackParamList = {
+export type RootStackParamList = {
   [NAVIGATION_KEYS.HOME]: undefined;
+  [NAVIGATION_KEYS.FAVORITES]: undefined;
 };

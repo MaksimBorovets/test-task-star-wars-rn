@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { Planet, StarWarsCharacter } from '../../modules/common/types';
+import { Planet, Species, StarWarsCharacter } from '../../modules/common/types';
 
 export interface IStarWarsResponse {
   count: number;
@@ -25,8 +25,14 @@ export const starWarsApi = createApi({
     getHomeWorld: builder.query<Planet, { planetNumber: string }>({
       query: ({ planetNumber }) => `planets/${planetNumber}`,
     }),
+    getSpecies: builder.query<Species, { speciesNumber: string }>({
+      query: ({ speciesNumber }) => `species/${speciesNumber}`,
+    }),
   }),
 });
 
-export const { useGetStarWarsCharactersQuery, useGetHomeWorldQuery } =
-  starWarsApi;
+export const {
+  useGetStarWarsCharactersQuery,
+  useGetHomeWorldQuery,
+  useGetSpeciesQuery,
+} = starWarsApi;

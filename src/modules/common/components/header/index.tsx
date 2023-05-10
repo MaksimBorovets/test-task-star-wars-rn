@@ -1,28 +1,46 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { HeaderItem } from './components/header-item';
 import { formatNumber } from '../../helpers';
 import { ToggleThemeComponent } from '../toogle-theme-component';
-
-interface IProps {}
-
-const GENDER_STATS_TABS = [
-  {
-    title: 'Female Fans',
-    count: 1,
-  },
-  {
-    title: 'Male Fans',
-    count: 100000,
-  },
-  {
-    title: 'Others',
-    count: 100,
-  },
-];
+import { useSelector } from 'react-redux';
+import { selectAllFavoriteCharacters } from '../../../../store/slices/starWarsCharactersSlice';
 
 export const Header = () => {
+  const favoriteCharacters = useSelector(selectAllFavoriteCharacters);
+
+  const [maleCount, femaleCount, otherCount] = useMemo(() => {
+    const maleCount = favoriteCharacters.filter(
+      character => character.gender === 'male',
+    ).length;
+    const femaleCount = favoriteCharacters.filter(
+      character => character.gender === 'female',
+    ).length;
+    const otherCount = favoriteCharacters.filter(
+      character => character.gender !== 'male' && character.gender !== 'female',
+    ).length;
+    return [maleCount, femaleCount, otherCount];
+  }, [favoriteCharacters]);
+
+  const GENDER_STATS_TABS = useMemo(
+    () => [
+      {
+        title: 'Female Fans',
+        count: femaleCount,
+      },
+      {
+        title: 'Male Fans',
+        count: maleCount,
+      },
+      {
+        title: 'Others',
+        count: otherCount,
+      },
+    ],
+    [maleCount, femaleCount, otherCount],
+  );
+
   return (
     <View style={styles.container}>
       <ToggleThemeComponent />

@@ -15,7 +15,7 @@ interface IHeroCardProps {
 }
 
 export const HeroCard = memo(({ hero }: IHeroCardProps) => {
-  const { containerSecondary } = useCommonStyles();
+  const { containerSecondary, textColorDefault } = useCommonStyles();
 
   const planetNumber = useMemo(
     () => urlOnlyNumberFormatter(hero.homeworld),
@@ -45,23 +45,23 @@ export const HeroCard = memo(({ hero }: IHeroCardProps) => {
     <View style={[containerSecondary, styles.cardContainer]}>
       <HeroCardHeader hero={hero} />
       <View style={styles.textBox}>
-        <Text style={styles.title}>Birth Year : </Text>
-        <Text>{hero.birth_year}</Text>
+        <Text style={styles.ukraineBlueText}>Birth Year : </Text>
+        <Text style={styles.ukraineBlueText}>{hero.birth_year}</Text>
       </View>
       <View style={styles.textBox}>
-        <Text style={styles.title}>Gender : </Text>
-        <Text>{hero.gender}</Text>
+        <Text style={styles.ukraineBlueText}>Gender : </Text>
+        <Text style={styles.ukraineBlueText}>{hero.gender}</Text>
       </View>
       {heroHomeWorld?.name && (
         <View style={styles.textBox}>
-          <Text style={styles.title}>Home World : </Text>
-          <Text>{heroHomeWorld?.name}</Text>
+          <Text style={styles.ukraineYellowText}>Home World : </Text>
+          <Text style={styles.ukraineYellowText}>{heroHomeWorld?.name}</Text>
         </View>
       )}
       {heroSpecies?.name && (
         <View style={styles.textBox}>
-          <Text style={styles.title}>Species : </Text>
-          <Text>{heroSpecies?.name}</Text>
+          <Text style={styles.ukraineYellowText}>Species : </Text>
+          <Text style={styles.ukraineYellowText}>{heroSpecies?.name}</Text>
         </View>
       )}
     </View>
@@ -100,8 +100,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 40,
   },
-  title: {
+  ukraineBlueText: {
     width: '30%',
+    fontWeight: '500',
+    fontSize: 16,
+    color: '#1e90ff', // Glory To Ukraine
   },
-  text: {},
+  ukraineYellowText: {
+    width: '30%',
+    fontWeight: '500',
+    fontSize: 16,
+    color: 'yellow', // Glory To Ukraine
+  },
 });

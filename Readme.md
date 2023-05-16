@@ -1,3 +1,5 @@
+## Demo is here => StarWarsRN_Demo.mov
+
 Star Wars Favorites Mobile Application
 Task:
 Implement the mobile application based on React Native for iOS & Android platforms that gives the ability to indicate the total amount of male/female/other favourite characters across the Star Wars Universe. 
@@ -28,3 +30,6 @@ workability: how your application works;
 projects structure: how you structure your files;
 code quality: how you write clean, readable code (feel free to install and use ESLint and Prettier);
 knowledge React, React Native and their ecosystem: how you compose and use libraries together;
+
+
+
